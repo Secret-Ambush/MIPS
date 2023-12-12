@@ -14,7 +14,7 @@
 .data
 arr: .word 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 len: .word 10
-key: .word 3
+key: .word 0
 msg1: .asciiz "Found!"
 msg2: .asciiz "Not Found!"
 
@@ -59,17 +59,22 @@ L1:
     move $a3, $t0       # key < current
     addi $a3, $a3, -1
     jal binary_sort
+    lw $ra, 0($sp)
+    addi $sp, $sp, 4
+    jr $ra
 
 greater:                # key > current
     move $a2, $t0
     jal binary_sort
+    lw $ra, 0($sp)
+    addi $sp, $sp, 4
+    jr $ra
 
 found:
     li $v0, 4
     la $a0, msg1
     syscall
 
-    lw $ra, 0($sp)
     addi $sp, $sp, 4
     jr $ra
 
