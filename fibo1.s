@@ -53,6 +53,3 @@ exit:
     lw $s1, 8($sp)      # Restore $s1 from the stack
     addi $sp, $sp, 12
     jr $ra
-
-
-

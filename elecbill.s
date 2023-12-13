@@ -36,8 +36,8 @@ under150:
 
 under250:
     li.s $f1, 250.0
-    c.le.s $f0, $f1
-    bc1f above250
+    c.le.s $f0, $f1     #set if f0 is less than or equal to f1
+    bc1f above250       #if false, branch to above250
 
     li.s $f1, 150.0
     sub.s $f2, $f0, $f1
